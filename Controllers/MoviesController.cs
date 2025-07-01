@@ -75,8 +75,12 @@ namespace PrimeCine.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<MovieDto>> CreateMovie(CreateMovieDto createMovieDto)
+        public async Task<ActionResult<MovieDto>> CreateMovie([FromBody] CreateMovieDto createMovieDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var movie = await _movieService.CreateMovieAsync(createMovieDto);
             return CreatedAtAction(nameof(GetMovie), new { id = movie.Id }, movie);
         }

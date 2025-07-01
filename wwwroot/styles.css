@@ -540,4 +540,38 @@ body {
     .section-title {
         font-size: 1.5rem;
     }
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95vw !important;
+        min-width: unset !important;
+        padding: 10px !important;
+    }
+    .auth-form, .form-group, .movie-details-info {
+        font-size: 1rem !important;
+    }
+    input, select, textarea, button {
+        font-size: 1.1rem !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+    .btn, button {
+        min-height: 44px;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .header-content, .user-section, .nav {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    .movies-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .movie-details-poster {
+        width: 100% !important;
+        max-width: 300px;
+        margin: 0 auto 1rem auto;
+        display: block;
+    }
 } 

@@ -547,18 +547,24 @@ function setupAddMovie() {
     const addMovieBtn = document.getElementById('addMovieBtn');
     const addMovieModal = document.getElementById('addMovieModal');
     const addMovieForm = document.getElementById('addMovieForm');
-    const closeBtns = addMovieModal.querySelectorAll('.close');
     if (addMovieBtn) {
-        addMovieBtn.addEventListener('click', async () => {
+        addMovieBtn.onclick = async function() {
             await loadGenres();
             showModal(addMovieModal);
-        });
+            // Mejorar experiencia móvil: hacer scroll al modal
+            setTimeout(() => {
+                addMovieModal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        };
     }
-    closeBtns.forEach(btn => btn.addEventListener('click', () => hideAllModals()));
-    addMovieForm.addEventListener('submit', async (e) => {
+    // Cerrar modal con cualquier .close
+    addMovieModal.querySelectorAll('.close').forEach(btn => {
+        btn.onclick = () => hideAllModals();
+    });
+    addMovieForm.onsubmit = async function(e) {
         e.preventDefault();
         await handleAddMovie();
-    });
+    };
 }
 
 async function loadGenres() {
@@ -611,7 +617,12 @@ async function handleAddMovie() {
             hideAllModals();
             loadMovies();
         } else {
-            showError('Error al agregar la película');
+            let errorMsg = 'Error al agregar la película';
+            try {
+                const error = await response.json();
+                errorMsg = error.message || JSON.stringify(error) || errorMsg;
+            } catch {}
+            showError(errorMsg);
         }
     } catch (err) {
         showError('Error al agregar la película');

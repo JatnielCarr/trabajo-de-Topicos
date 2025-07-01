@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PrimeCine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2fe0d0048eae74c228db6ce6b0ce0229cc479bb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f66c303e8d74536d4a286181db764af71211d38")]
 [assembly: System.Reflection.AssemblyProductAttribute("PrimeCine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PrimeCine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
