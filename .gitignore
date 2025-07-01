@@ -1,0 +1,16 @@
+   # Archivos y carpetas de .NET
+   bin/
+   obj/
+   .vs/
+   *.user
+   *.suo
+   *.userosscache
+   *.sln.docstates
+
+   # Configuración local
+   appsettings.json
+   appsettings.Development.json
+
+   # Otros archivos personales
+   *.db
+   *.log
