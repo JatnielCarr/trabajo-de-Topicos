@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PrimeCine.DTOs;
 using PrimeCine.Services;
 using System.Security.Claims;
+using System.Linq;
 
 namespace PrimeCine.Controllers
 {
@@ -159,6 +160,14 @@ namespace PrimeCine.Controllers
             var userId = GetCurrentUserId();
             var history = await _movieService.GetUserWatchHistoryAsync(userId.Value);
             return Ok(history);
+        }
+
+        [HttpGet("genres")]
+        public async Task<ActionResult<IEnumerable<string>>> GetGenres()
+        {
+            var movies = await _movieService.GetAllMoviesAsync();
+            var genres = movies.Select(m => m.Genre).Where(g => !string.IsNullOrWhiteSpace(g)).Distinct().OrderBy(g => g).ToList();
+            return Ok(genres);
         }
 
         private int? GetCurrentUserId()

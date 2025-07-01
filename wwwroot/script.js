@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     loadMovies();
     checkAuthStatus();
+    setupAddMovie();
 });
 
 function initializeApp() {
@@ -539,5 +540,80 @@ async function showTrailer(trailerUrl, movieId = null) {
         } catch (error) {
             console.error('Error registrando visualización en Supabase:', error);
         }
+    }
+}
+
+function setupAddMovie() {
+    const addMovieBtn = document.getElementById('addMovieBtn');
+    const addMovieModal = document.getElementById('addMovieModal');
+    const addMovieForm = document.getElementById('addMovieForm');
+    const closeBtns = addMovieModal.querySelectorAll('.close');
+    if (addMovieBtn) {
+        addMovieBtn.addEventListener('click', async () => {
+            await loadGenres();
+            showModal(addMovieModal);
+        });
+    }
+    closeBtns.forEach(btn => btn.addEventListener('click', () => hideAllModals()));
+    addMovieForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        await handleAddMovie();
+    });
+}
+
+async function loadGenres() {
+    const genreSelect = document.getElementById('movieGenre');
+    genreSelect.innerHTML = '';
+    try {
+        const response = await fetch(`${API_BASE_URL}/movies/genres`);
+        const genres = await response.json();
+        genres.forEach(genre => {
+            const option = document.createElement('option');
+            option.value = genre;
+            option.textContent = genre;
+            genreSelect.appendChild(option);
+        });
+    } catch (err) {
+        genreSelect.innerHTML = '<option value="">Error cargando géneros</option>';
+    }
+}
+
+async function handleAddMovie() {
+    const newGenre = document.getElementById('newGenreInput').value.trim();
+    const genre = newGenre ? newGenre : document.getElementById('movieGenre').value;
+    const data = {
+        title: document.getElementById('movieTitle').value,
+        description: document.getElementById('movieDescription').value,
+        year: parseInt(document.getElementById('movieYear').value),
+        genre: genre,
+        director: document.getElementById('movieDirector').value,
+        cast: document.getElementById('movieCast').value,
+        rating: parseFloat(document.getElementById('movieRating').value),
+        posterUrl: document.getElementById('moviePosterUrl').value,
+        trailerUrl: document.getElementById('movieTrailerUrl').value,
+        videoUrl: document.getElementById('movieVideoUrl').value,
+        duration: parseInt(document.getElementById('movieDuration').value),
+        language: document.getElementById('movieLanguage').value,
+        isFeatured: document.getElementById('movieIsFeatured').checked,
+        isNew: document.getElementById('movieIsNew').checked
+    };
+    try {
+        const response = await fetch(`${API_BASE_URL}/movies`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentUser.token}`
+            },
+            body: JSON.stringify(data)
+        });
+        if (response.ok) {
+            showSuccess('Película agregada correctamente');
+            hideAllModals();
+            loadMovies();
+        } else {
+            showError('Error al agregar la película');
+        }
+    } catch (err) {
+        showError('Error al agregar la película');
     }
 } 

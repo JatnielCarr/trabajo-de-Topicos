@@ -33,6 +33,7 @@
                 </div>
                 <div id="userSection" class="user-info" style="display: none;">
                     <span id="userName"></span>
+                    <button id="addMovieBtn" class="btn btn-success">Agregar Película</button>
                     <button id="logoutBtn" class="btn btn-outline">Cerrar Sesión</button>
                 </div>
             </div>
@@ -117,6 +118,72 @@
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('trailerModal').style.display='none';document.getElementById('trailerFrame').src='';">&times;</span>
             <iframe id="trailerFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Modal para agregar película -->
+    <div id="addMovieModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="auth-form">
+                <h2>Agregar Nueva Película</h2>
+                <form id="addMovieForm">
+                    <div class="form-group">
+                        <label for="movieTitle">Título</label>
+                        <input type="text" id="movieTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieDescription">Descripción</label>
+                        <textarea id="movieDescription" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieYear">Año</label>
+                        <input type="number" id="movieYear" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieGenre">Género</label>
+                        <select id="movieGenre" required></select>
+                        <input type="text" id="newGenreInput" placeholder="Nuevo género (opcional)" style="margin-top:5px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieDirector">Director</label>
+                        <input type="text" id="movieDirector" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieCast">Reparto</label>
+                        <input type="text" id="movieCast" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieRating">Calificación</label>
+                        <input type="number" step="0.1" min="0" max="10" id="movieRating" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="moviePosterUrl">URL de Portada</label>
+                        <input type="text" id="moviePosterUrl" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieTrailerUrl">URL de Trailer</label>
+                        <input type="text" id="movieTrailerUrl" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieVideoUrl">URL de Video (opcional)</label>
+                        <input type="text" id="movieVideoUrl">
+                    </div>
+                    <div class="form-group">
+                        <label for="movieDuration">Duración (minutos)</label>
+                        <input type="number" id="movieDuration" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="movieLanguage">Idioma</label>
+                        <input type="text" id="movieLanguage" value="Español" required>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="movieIsFeatured"> Destacada</label>
+                        <label><input type="checkbox" id="movieIsNew"> Nueva</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Película</button>
+                </form>
+            </div>
         </div>
     </div>
 
