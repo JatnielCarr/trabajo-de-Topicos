@@ -1,6 +1,7 @@
-using MovieAPI.DTOs;
+using PrimeCine.DTOs;
+using PrimeCine.Models;
 
-namespace MovieAPI.Services
+namespace PrimeCine.Services
 {
     public interface IAuthService
     {

@@ -1,8 +1,8 @@
 using AutoMapper;
-using MovieAPI.DTOs;
-using MovieAPI.Models;
+using PrimeCine.DTOs;
+using PrimeCine.Models;
 
-namespace MovieAPI.Mappings
+namespace PrimeCine.Mappings
 {
     public class AutoMapperProfile : Profile
     {

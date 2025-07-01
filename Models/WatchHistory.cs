@@ -1,4 +1,4 @@
-namespace MovieAPI.Models
+namespace PrimeCine.Models
 {
     public class WatchHistory
     {

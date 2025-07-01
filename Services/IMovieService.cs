@@ -1,6 +1,6 @@
-using MovieAPI.DTOs;
+using PrimeCine.DTOs;
 
-namespace MovieAPI.Services
+namespace PrimeCine.Services
 {
     public interface IMovieService
     {

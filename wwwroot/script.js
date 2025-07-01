@@ -80,17 +80,81 @@ function setupModalListeners() {
 }
 
 function setupAuthForms() {
-    // Formulario de login
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         await handleLogin();
     });
-
-    // Formulario de registro
-    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    document.getElementById('tokenForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        await handleRegister();
+        await handleTokenVerification();
     });
+    document.getElementById('copyTokenBtn').addEventListener('click', () => {
+        const token = document.getElementById('jwtTokenOutput').value;
+        navigator.clipboard.writeText(token);
+        showSuccess('Token copiado al portapapeles');
+    });
+}
+
+async function handleLogin() {
+    const username = document.getElementById('loginUsername').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
+    const jwtTokenSection = document.getElementById('jwtTokenSection');
+    const jwtTokenOutput = document.getElementById('jwtTokenOutput');
+    jwtTokenSection.style.display = 'none';
+    jwtTokenOutput.value = '';
+    try {
+        const response = await fetch(`${API_BASE_URL}/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+        if (!response.ok) {
+            showError('Credenciales incorrectas o error de autenticación');
+            return;
+        }
+        const data = await response.json();
+        if (data.token) {
+            jwtTokenOutput.value = data.token;
+            jwtTokenSection.style.display = 'block';
+        } else {
+            showError('No se recibió un token válido');
+        }
+    } catch (err) {
+        showError('Error al autenticar');
+    }
+}
+
+async function handleTokenVerification() {
+    const tokenInput = document.getElementById('tokenInput');
+    const tokenStatus = document.getElementById('tokenStatus');
+    const token = tokenInput.value.trim();
+    if (!token) {
+        tokenStatus.textContent = 'Por favor ingresa un token.';
+        tokenStatus.style.color = 'red';
+        return;
+    }
+    // Simular verificación de token (puedes cambiar esto por una llamada real a la API si lo deseas)
+    // Aquí simplemente aceptamos cualquier token no vacío como válido
+    // Si quieres validación real, haz una petición a la API
+    try {
+        // Ejemplo de validación real:
+        // const response = await fetch(`${API_BASE_URL}/auth/verify-token`, { headers: { 'Authorization': `Bearer ${token}` } });
+        // if (!response.ok) throw new Error('Token inválido');
+        // const data = await response.json();
+        // if (data.valid) { ... }
+        localStorage.setItem('primecine_token', token);
+        currentUser = { token };
+        tokenStatus.textContent = 'Token válido. ¡Acceso concedido!';
+        tokenStatus.style.color = 'green';
+        updateAuthUI();
+        setTimeout(() => {
+            hideAllModals();
+            tokenStatus.textContent = '';
+        }, 1000);
+    } catch (err) {
+        tokenStatus.textContent = 'Token inválido.';
+        tokenStatus.style.color = 'red';
+    }
 }
 
 // Navegación
@@ -298,8 +362,8 @@ async function showMovieDetails(movieId) {
                     <strong>Reparto:</strong> ${movie.cast}
                 </div>
                 <div class="movie-details-actions">
-                    <button class="btn btn-primary" onclick="addToWatchHistory(${movie.id})">
-                        <i class="fas fa-play"></i> Reproducir
+                    <button class="btn btn-primary" onclick="showTrailer('${movie.trailerUrl}', ${movie.id})">
+                        <i class="fas fa-play"></i> Ver trailer
                     </button>
                     <button class="btn btn-secondary" onclick="toggleFavorite(${movie.id})">
                         <i class="fas fa-heart"></i> ${movie.isFavorite ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}
@@ -376,106 +440,34 @@ async function addToWatchHistory(movieId) {
     }
 }
 
-// Autenticación
-async function handleLogin() {
-    const username = document.getElementById('loginUsername').value;
-    const password = document.getElementById('loginPassword').value;
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/auth/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, password })
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            currentUser = data;
-            localStorage.setItem('user', JSON.stringify(data));
-            updateAuthUI();
-            hideAllModals();
-            showSuccess('Inicio de sesión exitoso');
-        } else {
-            const error = await response.json();
-            showError(error.message || 'Credenciales inválidas');
-        }
-    } catch (error) {
-        console.error('Error en el login:', error);
-        showError('Error al iniciar sesión');
-    }
-}
-
-async function handleRegister() {
-    const formData = {
-        username: document.getElementById('registerUsername').value,
-        email: document.getElementById('registerEmail').value,
-        password: document.getElementById('registerPassword').value,
-        firstName: document.getElementById('registerFirstName').value,
-        lastName: document.getElementById('registerLastName').value,
-        dateOfBirth: document.getElementById('registerDateOfBirth').value
-    };
-
-    try {
-        const response = await fetch(`${API_BASE_URL}/auth/register`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            currentUser = data;
-            localStorage.setItem('user', JSON.stringify(data));
-            updateAuthUI();
-            hideAllModals();
-            showSuccess('Registro exitoso');
-        } else {
-            const error = await response.json();
-            showError(error.message || 'Error en el registro');
-        }
-    } catch (error) {
-        console.error('Error en el registro:', error);
-        showError('Error al registrarse');
-    }
-}
-
-function logout() {
-    currentUser = null;
-    localStorage.removeItem('user');
-    updateAuthUI();
-    showSuccess('Sesión cerrada');
-    
-    // Redirigir a la página principal si estamos en una sección que requiere autenticación
-    if (currentSection === 'favorites' || currentSection === 'history') {
-        navigateToSection('home');
-    }
-}
-
 function checkAuthStatus() {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-        currentUser = JSON.parse(savedUser);
-        updateAuthUI();
+    const token = localStorage.getItem('primecine_token');
+    if (token) {
+        currentUser = { token };
+    } else {
+        currentUser = null;
     }
+    updateAuthUI();
 }
 
 function updateAuthUI() {
     const loginSection = document.getElementById('loginSection');
     const userSection = document.getElementById('userSection');
-    const userName = document.getElementById('userName');
-
     if (currentUser) {
         loginSection.style.display = 'none';
-        userSection.style.display = 'flex';
-        userName.textContent = currentUser.user.firstName || currentUser.user.username;
+        userSection.style.display = 'block';
+        document.getElementById('userName').textContent = 'Token verificado';
     } else {
-        loginSection.style.display = 'flex';
+        loginSection.style.display = 'block';
         userSection.style.display = 'none';
+        document.getElementById('userName').textContent = '';
     }
+}
+
+function logout() {
+    localStorage.removeItem('primecine_token');
+    currentUser = null;
+    updateAuthUI();
 }
 
 // Utilidades
@@ -512,4 +504,40 @@ function showSuccess(message) {
 function showError(message) {
     // Implementar notificación de error
     alert('Error: ' + message);
+}
+
+// Agregar función para mostrar el trailer en un modal
+async function showTrailer(trailerUrl, movieId = null) {
+    const trailerModal = document.getElementById('trailerModal');
+    const trailerFrame = document.getElementById('trailerFrame');
+    if (trailerUrl.includes('youtube.com') || trailerUrl.includes('youtu.be')) {
+        // Convertir a formato embed si es necesario
+        let embedUrl = trailerUrl;
+        if (trailerUrl.includes('watch?v=')) {
+            embedUrl = trailerUrl.replace('watch?v=', 'embed/');
+        } else if (trailerUrl.includes('youtu.be/')) {
+            embedUrl = 'https://www.youtube.com/embed/' + trailerUrl.split('youtu.be/')[1];
+        }
+        trailerFrame.src = embedUrl;
+    } else {
+        trailerFrame.src = trailerUrl;
+    }
+    trailerModal.style.display = 'block';
+    // Registrar visualización en Supabase
+    if (currentUser && movieId) {
+        try {
+            await fetch('https://aws-0-us-east-1.pooler.supabase.com/rest/v1/trailer_views', {
+                method: 'POST',
+                headers: {
+                    // Reemplaza esta clave por tu propia API Key de Supabase
+                    'apikey': 'TU_API_KEY_SUPABASE',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${currentUser.token}`
+                },
+                body: JSON.stringify({ token: currentUser.token, movie_id: movieId })
+            });
+        } catch (error) {
+            console.error('Error registrando visualización en Supabase:', error);
+        }
+    }
 } 

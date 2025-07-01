@@ -1,4 +1,4 @@
-namespace MovieAPI.DTOs
+namespace PrimeCine.DTOs
 {
     public class MovieDto
     {

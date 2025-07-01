@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using MovieAPI.Data;
-using MovieAPI.Services;
+using PrimeCine.Data;
+using PrimeCine.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;

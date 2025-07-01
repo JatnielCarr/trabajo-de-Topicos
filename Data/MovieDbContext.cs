@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using MovieAPI.Models;
+using PrimeCine.Models;
 
-namespace MovieAPI.Data
+namespace PrimeCine.Data
 {
     public class MovieDbContext : DbContext
     {

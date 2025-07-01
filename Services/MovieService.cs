@@ -1,10 +1,10 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using MovieAPI.Data;
-using MovieAPI.DTOs;
-using MovieAPI.Models;
+using PrimeCine.Data;
+using PrimeCine.DTOs;
+using PrimeCine.Models;
 
-namespace MovieAPI.Services
+namespace PrimeCine.Services
 {
     public class MovieService : IMovieService
     {

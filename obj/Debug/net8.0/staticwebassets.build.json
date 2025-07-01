@@ -1,0 +1,331 @@
+{
+  "Version": 1,
+  "Hash": "F9zsB/sxsSeW17j4ezwY/oSl8n3eXJp9NMTx7/fTIF0=",
+  "Source": "PrimeCine",
+  "BasePath": "_content/PrimeCine",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "PrimeCine\\wwwroot",
+      "Source": "PrimeCine",
+      "ContentRoot": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\",
+      "BasePath": "_content/PrimeCine",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\index.html",
+      "SourceId": "PrimeCine",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\",
+      "BasePath": "_content/PrimeCine",
+      "RelativePath": "index#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "agemd3umcf",
+      "Integrity": "qmvyryWkhLpy20AVAfZ8HKMqbSKNxOHXFOrG1RdGkCc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\script.js",
+      "SourceId": "PrimeCine",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\",
+      "BasePath": "_content/PrimeCine",
+      "RelativePath": "script#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "aom8gtf6be",
+      "Integrity": "NsdQ+RVitaSvy+cOLR/Lo5eo5NzVyjC4t057VXKB0BU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\script.js"
+    },
+    {
+      "Identity": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\styles.css",
+      "SourceId": "PrimeCine",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\",
+      "BasePath": "_content/PrimeCine",
+      "RelativePath": "styles#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0vhouq1zna",
+      "Integrity": "lDnoSHfV/ovtkf8vcUrcoMSnZV4G1uWkYgyywEmun6k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\styles.css"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "index.agemd3umcf.html",
+      "AssetFile": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5512"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qmvyryWkhLpy20AVAfZ8HKMqbSKNxOHXFOrG1RdGkCc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 02:27:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "agemd3umcf"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-qmvyryWkhLpy20AVAfZ8HKMqbSKNxOHXFOrG1RdGkCc="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5512"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"qmvyryWkhLpy20AVAfZ8HKMqbSKNxOHXFOrG1RdGkCc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 02:27:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-qmvyryWkhLpy20AVAfZ8HKMqbSKNxOHXFOrG1RdGkCc="
+        }
+      ]
+    },
+    {
+      "Route": "script.aom8gtf6be.js",
+      "AssetFile": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\script.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18863"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NsdQ+RVitaSvy+cOLR/Lo5eo5NzVyjC4t057VXKB0BU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 02:26:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "aom8gtf6be"
+        },
+        {
+          "Name": "label",
+          "Value": "script.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-NsdQ+RVitaSvy+cOLR/Lo5eo5NzVyjC4t057VXKB0BU="
+        }
+      ]
+    },
+    {
+      "Route": "script.js",
+      "AssetFile": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\script.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18863"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NsdQ+RVitaSvy+cOLR/Lo5eo5NzVyjC4t057VXKB0BU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 02:26:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-NsdQ+RVitaSvy+cOLR/Lo5eo5NzVyjC4t057VXKB0BU="
+        }
+      ]
+    },
+    {
+      "Route": "styles.0vhouq1zna.css",
+      "AssetFile": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10289"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lDnoSHfV/ovtkf8vcUrcoMSnZV4G1uWkYgyywEmun6k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 01:47:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0vhouq1zna"
+        },
+        {
+          "Name": "label",
+          "Value": "styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lDnoSHfV/ovtkf8vcUrcoMSnZV4G1uWkYgyywEmun6k="
+        }
+      ]
+    },
+    {
+      "Route": "styles.css",
+      "AssetFile": "C:\\Users\\Jatniel\\Desktop\\trabajo-de-Topicos\\wwwroot\\styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10289"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lDnoSHfV/ovtkf8vcUrcoMSnZV4G1uWkYgyywEmun6k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 01 Jul 2025 01:47:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lDnoSHfV/ovtkf8vcUrcoMSnZV4G1uWkYgyywEmun6k="
+        }
+      ]
+    }
+  ]
+}

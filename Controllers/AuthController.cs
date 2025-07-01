@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using MovieAPI.DTOs;
-using MovieAPI.Services;
+using PrimeCine.DTOs;
+using PrimeCine.Services;
 
-namespace MovieAPI.Controllers
+namespace PrimeCine.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

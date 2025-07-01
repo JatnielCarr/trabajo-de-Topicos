@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieAPI - Tu Plataforma de Películas</title>
+    <title>PrimeCine - Tu Plataforma de Películas</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -12,7 +12,7 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                <h1>MovieAPI</h1>
+                <h1>PrimeCine</h1>
             </div>
             <nav class="nav">
                 <a href="#" class="nav-link active" data-section="home">Inicio</a>
@@ -30,7 +30,6 @@
             <div class="user-section">
                 <div id="loginSection" class="login-section">
                     <button id="loginBtn" class="btn btn-primary">Iniciar Sesión</button>
-                    <button id="registerBtn" class="btn btn-secondary">Registrarse</button>
                 </div>
                 <div id="userSection" class="user-info" style="display: none;">
                     <span id="userName"></span>
@@ -45,7 +44,7 @@
         <!-- Hero Section -->
         <section id="heroSection" class="hero-section">
             <div class="hero-content">
-                <h2>Bienvenido a MovieAPI</h2>
+                <h2>Bienvenido a PrimeCine</h2>
                 <p>Descubre miles de películas y series en una sola plataforma</p>
                 <button class="btn btn-primary btn-large">Explorar Ahora</button>
             </div>
@@ -83,56 +82,41 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <div class="auth-form">
-                <h2>Iniciar Sesión</h2>
+                <h2>Iniciar Sesión (Admin)</h2>
                 <form id="loginForm">
                     <div class="form-group">
-                        <label for="loginUsername">Usuario o Email</label>
+                        <label for="loginUsername">Usuario</label>
                         <input type="text" id="loginUsername" required>
                     </div>
                     <div class="form-group">
                         <label for="loginPassword">Contraseña</label>
                         <input type="password" id="loginPassword" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    <button type="submit" class="btn btn-primary">Obtener Token</button>
+                </form>
+                <div id="jwtTokenSection" style="display:none; margin-top:15px;">
+                    <label for="jwtTokenOutput">Token JWT generado:</label>
+                    <textarea id="jwtTokenOutput" rows="3" readonly style="width:100%;"></textarea>
+                    <button id="copyTokenBtn" class="btn btn-secondary" style="margin-top:5px;">Copiar token</button>
+                </div>
+                <hr>
+                <h3>Ingresar token manualmente</h3>
+                <form id="tokenForm">
+                    <div class="form-group">
+                        <label for="tokenInput">Token de acceso</label>
+                        <input type="text" id="tokenInput" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Verificar</button>
+                    <div id="tokenStatus" style="margin-top:10px;"></div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Register Modal -->
-    <div id="registerModal" class="modal">
+    <div id="trailerModal" class="modal" style="display:none;">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="auth-form">
-                <h2>Registrarse</h2>
-                <form id="registerForm">
-                    <div class="form-group">
-                        <label for="registerUsername">Usuario</label>
-                        <input type="text" id="registerUsername" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="registerEmail">Email</label>
-                        <input type="email" id="registerEmail" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="registerPassword">Contraseña</label>
-                        <input type="password" id="registerPassword" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="registerFirstName">Nombre</label>
-                        <input type="text" id="registerFirstName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="registerLastName">Apellido</label>
-                        <input type="text" id="registerLastName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="registerDateOfBirth">Fecha de Nacimiento</label>
-                        <input type="date" id="registerDateOfBirth" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
-                </form>
-            </div>
+            <span class="close" onclick="document.getElementById('trailerModal').style.display='none';document.getElementById('trailerFrame').src='';">&times;</span>
+            <iframe id="trailerFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 

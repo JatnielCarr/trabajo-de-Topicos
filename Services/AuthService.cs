@@ -1,14 +1,14 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using MovieAPI.Data;
-using MovieAPI.DTOs;
-using MovieAPI.Models;
+using PrimeCine.Data;
+using PrimeCine.DTOs;
+using PrimeCine.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace MovieAPI.Services
+namespace PrimeCine.Services
 {
     public class AuthService : IAuthService
     {

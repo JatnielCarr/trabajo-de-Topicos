@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MovieAPI.Models
+namespace PrimeCine.Models
 {
     public class Movie
     {
